@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;//cambio de escena
+using UnityEngine.SceneManagement;//cambio de escena 
 using UnityEngine.UI;//libreria interface
 
 public class ClicKObject : MonoBehaviour
