@@ -7,44 +7,64 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     public CharacterController controller;//me permite coger el controlador del personaje
-    //public AnimatorController Animator;//me permite coger las animaciones del personaje
+    Animator anim;
 
-    public float speed = 5f;//me permite ajustar la velocidad que va el personaje mientras avanza en una dirección
+    Vector2 movement;
+    public float walkSpeed;
+    public float sprintSpeed;
+    bool sprinting;
+    float trueSpeed;
 
-    public float Gravity = -9.81f;
-    public Vector3 velocity;//permite coger la velocidad del jugador
+    private Vector3 velocity;//permite coger la velocidad del jugador
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask floorMask;
-    bool IsGrounded;
+    public float jumpHeight;
+    public float gravity;
+    bool isGrounded;
 
-    public float turnSmoothTime = 0.1f;//Esto permite que al girar el personaje, haga un movimiento de giro fluido sin verse tosco o pixelado
+    float turnSmoothTime = 0.1f;//Esto permite que al girar el personaje, haga un movimiento de giro fluido sin verse tosco o pixelado
 
     float turnSmoothVelocity;//Esto permite que el movimiento del personaje, se mueva más lento 
 
     public Transform cam;//Esto permitira coger la camara del personaje en tercera persona
 
-    
     private void Start()
     {
-        CharacterController controller = GetComponent<CharacterController>();
-        //AnimatorController animator = GetComponent<AnimatorController>();
+        trueSpeed = walkSpeed;       
+        controller = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+       
     }
 
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");//Esto permitira coger los controles horinzontales a y d del teclado. Ojo poner el parentesis, las comillas y la primera letra en mayuscula, que si no lo pones, el personaje no se movera.
-        float vertical = Input.GetAxisRaw("Vertical");//Esto permitira coger los controles horinzontales w y s del teclado. Ojo poner el parentesis, las comillas y la primera letra en mayuscula, que si no lo pones, el personaje no se movera.
+        isGrounded = Physics.CheckSphere(transform.position, 0.1f, 1);
+        anim.SetBool("IsGrounded", isGrounded);
 
-        Vector3 direction = new Vector3(horizontal,0f, vertical).normalized;//Esto permite que el objecto se mueva en una direccion nueva en los ejes x e Z. La y los dejamos en cero para que el muñeco no suba arriba.
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2;
+        }
 
-        //float fire2 = Input.GetAxisRaw("Fire2");//Con esto permitiria golpear al enemigo
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            trueSpeed = sprintSpeed;
+            sprinting = true;
+        }
 
-        //float fire3 = Input.GetAxisRaw("Fire3");//Con esto permitira golpear más fuerte
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            trueSpeed = walkSpeed;
+            sprinting = false;
+        }
 
-        //float fire1 = Input.GetAxisRaw("Fire1");//Esto permitira bloquear el ataque del enemigo
-    
+
+        anim.transform.localPosition = Vector3.zero;
+        anim.transform.localEulerAngles = Vector3.zero;
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 direction = new Vector3(movement.x ,0f, movement.y).normalized;//Esto permite que el objecto se mueva en una direccion nueva en los ejes x e Z. La y los dejamos en cero para que el muñeco no suba arriba.
+
 
         if (direction.magnitude >= 0.1f)//Esto permite que gire más fluido mayor que 0.1. Si es menor que 0.1, el movimiento de girar se vera más pixelado.
         {
@@ -52,30 +72,38 @@ public class MovePlayer : MonoBehaviour
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y,targetAngle, ref turnSmoothVelocity, turnSmoothTime);//Permite calcular la fluidez del giro del personaje
 
-            Vector3 movDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
 
             transform.rotation = Quaternion.Euler(0f,angle,0f);
  
-            controller.Move(movDir.normalized*speed*Time.deltaTime);//Esto permite mover al personaje rapido o lento
+            controller.Move(moveDirection.normalized * trueSpeed * Time.deltaTime);//Esto permite mover al personaje rapido o lento
+
+            if (sprinting == true) 
+            {
+                anim.SetFloat("Speed", 2);
+            }
+            else
+            {
+                anim.SetFloat("Speed", 1);
+            }
         }
-
-
-        IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, floorMask);
-
-
-        velocity.y += Gravity * Time.deltaTime;
-        if (IsGrounded && velocity.y < 0)
+        else
         {
-            velocity.y = -9.81f;
+            anim.SetFloat("Speed", 0);
         }
 
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt((jumpHeight * 10) * -2 * gravity);
+        }
+
+        if (velocity.y > -20)
+        {
+            velocity.y += (gravity * 10) * Time.deltaTime;
+        }
+
+        
         controller.Move(velocity * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded)
-        {
-            velocity.y = Mathf.Sqrt(3 * -2 * Gravity);
-        }
-
     }
-
 }
