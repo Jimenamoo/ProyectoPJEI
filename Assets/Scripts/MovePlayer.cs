@@ -21,8 +21,6 @@ public class MovePlayer : MonoBehaviour
     public float gravity;
     bool isGrounded;
 
-    public bool isAttacking;
-
     float turnSmoothTime = 0.1f;//Esto permite que al girar el personaje, haga un movimiento de giro fluido sin verse tosco o pixelado
 
     float turnSmoothVelocity;//Esto permite que el movimiento del personaje, se mueva más lento 
@@ -97,17 +95,8 @@ public class MovePlayer : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 10) * -2 * gravity);
+        }
 
-        }
-        if (isGrounded)
-        {
-            anim.SetBool("jump", false);
-        }
-        else
-        {
-            anim.SetBool("jump", true);
-        }
-            
         if (velocity.y > -20)
         {
             velocity.y += (gravity * 10) * Time.deltaTime;
@@ -116,24 +105,5 @@ public class MovePlayer : MonoBehaviour
         
         controller.Move(velocity * Time.deltaTime);
 
-    }
-
-    public void fire1() 
-    {
-        if (!isAttacking) 
-        {
-            isAttacking = true;
-            Animator.SetBool();
-        }
-    }
-
-    public void StartAttacking()
-    {
-        isAttacking = true; 
-    }
-
-    public void FinishAttacking() 
-    { 
-        isAttacking = false;
     }
 }
