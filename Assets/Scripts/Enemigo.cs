@@ -59,9 +59,19 @@ public class Enemigo : MonoBehaviour
 
             if (distanceToPlayer < radioAtaque) // Dentro de rango de ataque
             {
+                movimiento = Vector3.zero;
+                animator.SetBool("walk", false);
                 AtacarJugador();
             }
+
+            else // Si el jugador está en el radio de detección pero fuera del radio de ataque
+            {
+                // El enemigo vuelve a moverse hacia el jugador
+                movimiento = new Vector3(direction.x, 0, direction.z);
+                animator.SetBool("walk", true);
+            }
         }
+
         else // Si está fuera del rango
         {
             // Patrullaje
@@ -92,14 +102,45 @@ public class Enemigo : MonoBehaviour
 
     void AtacarJugador()
     {
-        // Verifica si ha pasado el tiempo suficiente para un nuevo ataque
         if (Time.time - tiempoUltimoAtaque >= tiempoDeAtaque)
         {
             tiempoUltimoAtaque = Time.time;
-            // Llama al ataque en el Animator (asegúrate de tener un trigger de "Attack" en el Animator)
-            animator.SetTrigger("attack");
+
+            // Si el jugador ya no está en el radio de ataque, no ataca y vuelve a caminar
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer > radioAtaque)
+            {
+                animator.SetBool("walk", true); // Reactiva la animación de caminar
+                return;
+            }
+
+            // Detiene el movimiento solo mientras ataca
+            movimiento = Vector3.zero;
+            animator.SetBool("walk", false);
+
+            // Elegir aleatoriamente una de las dos animaciones de ataque
+            int randomAttack = Random.Range(0, 2);
+            if (randomAttack == 0)
+                animator.SetTrigger("attack1");
+            else
+                animator.SetTrigger("attack2");
+
+            // Asegurar que después del ataque vuelva a caminar
+            Invoke("ReactivarCaminar", 1.0f); // Espera 1 segundo después del ataque y vuelve a caminar
         }
     }
+
+    // Método para reactivar la animación de caminar
+    void ReactivarCaminar()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer > radioAtaque) // Solo vuelve a caminar si ya no está en rango de ataque
+        {
+            animator.SetBool("walk", true);
+        }
+    }
+
 
     void CambiarDestino() // Patrullaje aleatorio si no detecta al player
     {
