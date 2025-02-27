@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    public CharacterController controller;//me permite coger el controlador del personaje
+    public CharacterController controller;//me permite coger el controlador del personaje 
     Animator anim;
 
     Vector2 movement;
