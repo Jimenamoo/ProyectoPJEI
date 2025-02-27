@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Mision.unity
+    path: Assets/Scenes/Dialogos.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Interfaz/Menu.unity
     guid: e7abda740b6c0074da171ce4c397070b
   - enabled: 1
-    path: Assets/Scenes/misiones prin.unity
+    path: Assets/Scenes/Interfaz/misiones prin.unity
     guid: 628515dc3c9d6db49a5a7601a5d9b83e
   - enabled: 1
-    path: Assets/Scenes/misiones secun.unity
+    path: Assets/Scenes/Interfaz/misiones secun.unity
     guid: 14480b76956cd2e42947998d6ea9ca48
   m_configObjects: {}
