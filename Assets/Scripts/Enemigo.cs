@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemigo : MonoBehaviour
 {
@@ -105,41 +106,31 @@ public class Enemigo : MonoBehaviour
         if (Time.time - tiempoUltimoAtaque >= tiempoDeAtaque)
         {
             tiempoUltimoAtaque = Time.time;
+            animator.SetBool("isAttacking", true); // Activa la variable booleana
 
-            // Si el jugador ya no está en el radio de ataque, no ataca y vuelve a caminar
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer > radioAtaque)
-            {
-                animator.SetBool("walk", true); // Reactiva la animación de caminar
-                return;
-            }
-
-            // Detiene el movimiento solo mientras ataca
-            movimiento = Vector3.zero;
-            animator.SetBool("walk", false);
-
-            // Elegir aleatoriamente una de las dos animaciones de ataque
             int randomAttack = Random.Range(0, 2);
             if (randomAttack == 0)
                 animator.SetTrigger("attack1");
             else
                 animator.SetTrigger("attack2");
 
-            // Asegurar que después del ataque vuelva a caminar
-            Invoke("ReactivarCaminar", 1.0f); // Espera 1 segundo después del ataque y vuelve a caminar
+            StartCoroutine(ReactivarCaminar());
+            StartCoroutine(TerminarAtaque());
         }
     }
 
-    // Método para reactivar la animación de caminar
-    void ReactivarCaminar()
+    IEnumerator ReactivarCaminar()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (distanceToPlayer > radioAtaque) // Solo vuelve a caminar si ya no está en rango de ataque
-        {
-            animator.SetBool("walk", true);
-        }
+        yield return new WaitForSeconds(1.0f); // Esperar a que termine el ataque
+        animator.SetBool("isAttacking", false); // Permitir volver a idle o caminar
     }
+
+    IEnumerator TerminarAtaque()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length); // Esperar a que termine la animación
+        animator.SetBool("isAttacking", false);
+    }
+
 
 
     void CambiarDestino() // Patrullaje aleatorio si no detecta al player
@@ -154,6 +145,16 @@ public class Enemigo : MonoBehaviour
     {
         Vector3 direction = (destino - transform.position).normalized;
         movimiento = new Vector3(direction.x, 0, direction.z);
+        GirarHaciaDireccion(movimiento);
+    }
+
+    void GirarHaciaDireccion(Vector3 direccion)
+    {
+        if (direccion.magnitude > 0.1f) // Solo rotar si hay movimiento
+        {
+            Quaternion rotation = Quaternion.LookRotation(direccion);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5f); // Suaviza la rotación
+        }
     }
 
     // Método público para hacer que el enemigo se quede quieto
