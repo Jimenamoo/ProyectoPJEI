@@ -39,7 +39,7 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(transform.position, 0.1f, 1);
+        isGrounded = controller.isGrounded;
         anim.SetBool("IsGrounded", isGrounded);
 
         if (isGrounded && velocity.y < 0)
