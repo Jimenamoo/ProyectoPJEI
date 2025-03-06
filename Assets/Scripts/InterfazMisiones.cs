@@ -1,33 +1,34 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; // Necesario para usar coroutines
-
-
+using System.Collections;
+using System.Collections.Generic;
 
 public class InterfazMisiones : MonoBehaviour
 {
     public GameObject missionPanel; // Panel de la ventana emergente
     public TMP_Text missionText;
-    public GameObject player;
-    public string firstMission = "MISIÓN 1:Lávate la cara y cámbiate de ropa"; // Texto de la primera misión
-    public string secondMission = "Sal de la habitación para explorar";
+    public string firstMission = "MISIÓN 1: Lávate la cara y cámbiate de ropa";
+    public string secondMission = "MISIÓN 2: Sal de la habitación para explorar";
 
-    private int interactions = 0;
+    private List<DialogueManager> interactuableObjects = new List<DialogueManager>(); // Lista de objetos interactuables
+    private int interactions = 0; // Contador de interacciones
     private bool firstMissionCompleted = false;
+
+    public ChangeScenePuerta changeSceneScript; // Referencia al script ChangeScenePuerta
 
     void Start()
     {
-        // Iniciar la coroutine para mostrar el panel y el texto después de 3 segundos
+        // Encuentra todos los objetos con el script DialogueManager y los añade a la lista
+        interactuableObjects.AddRange(FindObjectsOfType<DialogueManager>());
         StartCoroutine(ActivatePanelAndTextAfterDelay());
     }
 
-    // Coroutine que activa el panel y el texto después de 3 segundos
     private IEnumerator ActivatePanelAndTextAfterDelay()
     {
-        yield return new WaitForSeconds(3f); // Espera 3 segundos
-        missionPanel.SetActive(true); // Activar el panel
-        missionText.text = firstMission; // Establecer el texto de la misión
-        missionText.ForceMeshUpdate(); // Actualizar el texto inmediatamente
+        yield return new WaitForSeconds(3f);
+        missionPanel.SetActive(true);
+        missionText.text = firstMission;
+        missionText.ForceMeshUpdate();
     }
 
     public void RegisterInteraction()
@@ -35,15 +36,17 @@ public class InterfazMisiones : MonoBehaviour
         if (!firstMissionCompleted)
         {
             interactions++;
-            if (interactions >= 2)
+            if (interactions >= interactuableObjects.Count) // Si interactuaste con todos los objetos
             {
                 firstMissionCompleted = true;
                 missionText.text = secondMission;
+                missionText.ForceMeshUpdate();
+
+                // Activar el cambio de escena solo después de completar las interacciones
+                changeSceneScript.EnableSceneChange(true); // Habilitar el cambio de escena
             }
         }
     }
 }
-
-
 
 
