@@ -95,6 +95,7 @@ public class MovePlayer : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 10) * -2 * gravity);
+            
         }
 
         if (velocity.y > -20)
