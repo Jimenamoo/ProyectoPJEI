@@ -106,5 +106,10 @@ public class MovePlayer : MonoBehaviour
         
         controller.Move(velocity * Time.deltaTime);
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            anim.SetTrigger("Punch"); 
+        }
+
     }
 }
