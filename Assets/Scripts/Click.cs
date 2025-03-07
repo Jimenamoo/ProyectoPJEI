@@ -7,7 +7,7 @@ using UnityEngine.UI;//libreria interface
 public class ClicKObject : MonoBehaviour
 {
     public string sceneName;//variable nombre escena
-    public Canvas canvasSuporposición;//el canvas que se activa/desactiva
+    public Canvas canvasSuporposicion;//el canvas que se activa/desactiva
     public void OnMouseDown()
     {
         Debug.Log("hago click");//escribe en consola eso
@@ -25,14 +25,14 @@ public class ClicKObject : MonoBehaviour
     }
     public void ActivaSuporposicion()
     {
-        canvasSuporposición.gameObject.SetActive(true);//activa la superposición
+        canvasSuporposicion.gameObject.SetActive(true);//activa la superposici?n
     }
 
 
 
     public void DesactivaSuporposicion()
     {
-        canvasSuporposición.gameObject.SetActive(false);//activa la superposición
+        canvasSuporposicion.gameObject.SetActive(false);//activa la superposici?n
     }
     public void ChangeLevel()//nos crea una variable con el nombre de la escena
     {
