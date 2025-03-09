@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Interfaz/misiones secun.unity
     guid: 14480b76956cd2e42947998d6ea9ca48
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: 2c8514555c92f4d93830aef41d357da0
+  - enabled: 1
+    path: Assets/Scenes/NivelDos.unity
+    guid: 10de380f9843e5444bda8e9f77b73d93
   m_configObjects: {}
