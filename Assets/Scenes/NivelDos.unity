@@ -1318,8 +1318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 765618946}
-  walkSpeed: 10
-  sprintSpeed: 15
+  walkSpeed: 8
+  sprintSpeed: 10
   jumpHeight: 2
   gravity: -4
   cam: {fileID: 1717910352}
