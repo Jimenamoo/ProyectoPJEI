@@ -8,13 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Dialogos.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Interfaz/Menu.unity
     guid: e7abda740b6c0074da171ce4c397070b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Interfaz/misiones prin.unity
     guid: 628515dc3c9d6db49a5a7601a5d9b83e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Interfaz/misiones secun.unity
     guid: 14480b76956cd2e42947998d6ea9ca48
+  - enabled: 1
+    path: Assets/Scenes/Enemigo.unity
+    guid: 7a323172dd31f9746957963e8727312d
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: be9a4d4987d120e4693fdfde34d9fed3
+  - enabled: 1
+    path: Assets/Scenes/NivelTres.unity
+    guid: 62e6cdc4bb835634f961487d47287dee
+  - enabled: 1
+    path: Assets/Scenes/Protagonista.unity
+    guid: 9f8ee027a4d5f5f41b7b75b0808705f4
   m_configObjects: {}
