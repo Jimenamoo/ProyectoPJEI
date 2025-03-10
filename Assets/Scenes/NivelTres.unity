@@ -3394,8 +3394,8 @@ MonoBehaviour:
   controller: {fileID: 1149063283}
   walkSpeed: 8
   sprintSpeed: 10
-  jumpHeight: 5
-  gravity: 0
+  jumpHeight: 3
+  gravity: -18
   cam: {fileID: 1319942662}
 --- !u!143 &1149063283
 CharacterController:
