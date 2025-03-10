@@ -1421,7 +1421,7 @@ MonoBehaviour:
   missionText: {fileID: 1358550470}
   firstMission: "Misi\xF3n1:L\xE1vate la cara y c\xE1mbiate de ropa"
   secondMission: "Misi\xF3n 2:Sal de la habitaci\xF3n para explorar"
-  changeSceneScript: {fileID: 7508202936825035316}
+  changeSceneScript: {fileID: 7508202936825035318}
 --- !u!1 &578041901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,7 +6030,7 @@ GameObject:
   - component: {fileID: 7508202936825035317}
   - component: {fileID: 3456056424851618220}
   - component: {fileID: 1194788812}
-  - component: {fileID: 7508202936825035316}
+  - component: {fileID: 7508202936825035318}
   m_Layer: 0
   m_Name: puerta
   m_TagString: Untagged
@@ -6038,19 +6038,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7508202936825035316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7508202936825035315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee95a5e1cc02ba649b9ffd211649e349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: NivelDos
 --- !u!114 &7508202936825035317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6068,6 +6055,19 @@ MonoBehaviour:
   canOpen: 0
   interactionRange: 2
   player: {fileID: 0}
+--- !u!114 &7508202936825035318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508202936825035315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee95a5e1cc02ba649b9ffd211649e349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Carga
 --- !u!23 &7548733546196106325
 MeshRenderer:
   m_ObjectHideFlags: 0

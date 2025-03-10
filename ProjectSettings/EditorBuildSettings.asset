@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Interfaz/misiones secun.unity
     guid: 14480b76956cd2e42947998d6ea9ca48
   - enabled: 1
+    path: Assets/Scenes/Carga.unity
+    guid: 4fdab2e2a48303c47afd8df856ac8092
+  - enabled: 1
     path: Assets/Scenes/Enemigo.unity
     guid: 7a323172dd31f9746957963e8727312d
   - enabled: 1
@@ -25,13 +28,13 @@ EditorBuildSettings:
     guid: 5b3e752b9eab6f54c97b7fb18032a786
   - enabled: 1
     path: Assets/Scenes/NivelUno.unity
-    guid: 3dbd6be400317cc4f83829ba2eb3ecc1
+    guid: ea8dd0fa06b26f24e9e95f951245721f
   - enabled: 1
     path: Assets/Scenes/OpcionesControles.unity
     guid: c37914ed9a061f642b224fbb4c65c889
   - enabled: 1
     path: Assets/Scenes/OpcionesGraficos.unity
-    guid: 9407b08bdca6bde41b88750c0e62be2a
+    guid: f322ab79e65f9bd4ba881a7688cdb95b
   - enabled: 1
     path: Assets/Scenes/NivelDos.unity
     guid: 10de380f9843e5444bda8e9f77b73d93
@@ -43,10 +46,10 @@ EditorBuildSettings:
     guid: 0973bdae7c082fc4f9b56f5f4f0fede4
   - enabled: 1
     path: Assets/Scenes/OpcionesPantalla.unity
-    guid: 8ae4c2841def88548824864c3613541c
+    guid: bdb1fcda18f61424d8a86d7ca234c2f7
   - enabled: 1
     path: Assets/Scenes/OpcionesSonido.unity
-    guid: d92dd973be113f84e915d55be0745045
+    guid: 0d7e211fa30cce94289cc19cac2fcb48
   - enabled: 1
     path: Assets/Scenes/Protagonista.unity
     guid: 9f8ee027a4d5f5f41b7b75b0808705f4
