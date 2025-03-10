@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Enemigo.unity
     guid: 7a323172dd31f9746957963e8727312d
   - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: ee0fdd6ea8063a64e8c2bf6c825a33c8
+  - enabled: 1
     path: Assets/Scenes/Inicio.unity
     guid: 5b3e752b9eab6f54c97b7fb18032a786
   - enabled: 1
