@@ -1060,7 +1060,7 @@ MonoBehaviour:
   - {x: 4.849976, y: -411.85}
   - {x: 644.6499, y: -411.85}
   tolerance: 100
-  nextSceneName: 
+  nextSceneName: NivelTres
 --- !u!4 &1460557161
 Transform:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Interfaz/misiones secun.unity
     guid: 14480b76956cd2e42947998d6ea9ca48
   - enabled: 1
+    path: Assets/Scenes/NivelTres.unity
+    guid: 2a31315440338bd41962062476ba9670
+  - enabled: 1
     path: Assets/Scenes/Carga.unity
     guid: 4fdab2e2a48303c47afd8df856ac8092
   - enabled: 1
