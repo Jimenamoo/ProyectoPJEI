@@ -14,7 +14,16 @@ public class ManagerPuzzle : MonoBehaviour
     public string nextSceneName = "NombreDeLaEscena"; // Cambia esto por el nombre de tu escena destino
 
     void Start()
+
     {
+
+        
+        {
+            Cursor.lockState = CursorLockMode.None;  // Libera el cursor
+            Cursor.visible = true;  // Hace que el cursor sea visible
+        }
+
+
         // Obtener el tamaño del Canvas en píxeles
         Vector2 canvasSize = canvasRectTransform.sizeDelta;
 
