@@ -3868,7 +3868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8867924, g: 0.6491395, b: 0.48104307, a: 0.99215686}
+  m_Color: {r: 0.8867924, g: 0.6491395, b: 0.48104307, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4331,7 +4331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9056604, g: 0.5050021, b: 0.38020647, a: 0.42745098}
+  m_Color: {r: 0.9056604, g: 0.5050021, b: 0.38020647, a: 0.22745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6312,7 +6312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee95a5e1cc02ba649b9ffd211649e349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Menu
+  sceneToLoad: Inicio
 --- !u!114 &7508202936825035317
 MonoBehaviour:
   m_ObjectHideFlags: 0
